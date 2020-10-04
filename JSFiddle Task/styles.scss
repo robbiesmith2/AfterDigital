@@ -1,0 +1,100 @@
+/*
+SCSS Task Instructions:
+
+Using SCSS, Please complete the following without modifying the markup:
+
+1. Set the background colours of the block using the supplied $colours array as a reference.
+
+2. Using flexbox and the markup provided. Create a list of blocks that have the following properites:
+    Desktop (1000px +): 25% Width, 1:1 Aspect Ratio.
+    Tablet (768px +): 50% Width, 16:9 Aspect Ratio.
+    Mobile (0px +): 100% Width, 1:1 Aspect Ratio.
+
+3. Make the 2nd block spin 360 degrees infinitely and scale between 0.5 and 1. Ill leave the transition timing of the animation up to your judgement.
+
+*/
+
+/**
+* Test Block
+*/
+
+/* Variables */
+$colours: (
+ 'red': red,
+ 'blue': blue,
+ 'orange': orange,
+ 'black': black
+);
+
+@each $colour, $value in $colours {
+    .test__block--#{$colour} {
+        background: $value;
+    }
+}
+
+/* Main Styles */
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.test {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* Responsive Styles */
+
+$desktop: 1000px;
+$tablet: 768px;
+
+$breakpoints: (
+    $tablet: (
+        flex-basis: 50vw,
+        height: calc(#{50vw * 0.5625}),
+        position: relative
+    ),
+    $desktop: (
+        flex-basis: 25vw,
+        height: 25vw,
+        position: relative
+    )
+);
+
+@mixin responsiveStyles($breakpoints) {
+    flex-basis: 100vw;
+    height: 100vw;
+    content: ' ';
+    @each $prop, $configs in $breakpoints {
+        @media only screen and (min-width: $prop) {
+            @each $prop, $value in $configs {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
+
+.test__block {
+    @include responsiveStyles($breakpoints);
+
+    &:nth-child(2) {
+        animation: 10s linear spinAndScale infinite;
+        z-index: 2;
+    }
+}
+
+// Keyframe Animations
+
+@keyframes spinAndScale {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(0.5);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}

@@ -1,0 +1,85 @@
+/*
+SCSS Task Instructions:
+
+Using SCSS, Please complete the following without modifying the markup:
+
+1. Set the background colours of the block using the supplied $colours array as a reference.
+
+2. Using flexbox and the markup provided. Create a list of blocks that have the following properites:
+    Desktop (1000px +): 25% Width, 1:1 Aspect Ratio.
+    Tablet (768px +): 50% Width, 16:9 Aspect Ratio.
+    Mobile (0px +): 100% Width, 1:1 Aspect Ratio.
+
+3. Make the 2nd block spin 360 degrees infinitely and scale between 0.5 and 1. Ill leave the transition timing of the animation up to your judgement.
+
+*/
+/**
+* Test Block
+*/
+/* Variables */
+.test__block--red {
+  background: red;
+}
+
+.test__block--blue {
+  background: blue;
+}
+
+.test__block--orange {
+  background: orange;
+}
+
+.test__block--black {
+  background: black;
+}
+
+/* Main Styles */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.test {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Responsive Styles */
+.test__block {
+  flex-basis: 100vw;
+  height: 100vw;
+  content: " ";
+}
+@media only screen and (min-width: 768px) {
+  .test__block {
+    flex-basis: 50vw;
+    height: calc(28.125vw);
+    position: relative;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .test__block {
+    flex-basis: 25vw;
+    height: 25vw;
+    position: relative;
+  }
+}
+.test__block:nth-child(2) {
+  animation: 10s linear spinAndScale infinite;
+  z-index: 2;
+}
+
+@keyframes spinAndScale {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    src: url('..fonts/fa-regular-400.eot');
+    src: url('..fonts/fa-regular-400.eot?#iefix') format('embedded-opentype'),
+    url('..fonts/fa-regular-400.woff2') format('woff2'),
+    url('..fonts/fa-regular-400.woff') format('woff'),
+    url('..fonts/fa-regular-400.ttf') format('truetype'),
+    url('..fonts/fa-regular-400.svg#fontawesome') format('svg');
+  }
+
+$primary-font: 'Open Sans', sans-serif; 

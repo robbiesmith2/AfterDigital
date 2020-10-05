@@ -3,6 +3,7 @@ const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const del = require("del");
 const browserSync = require('browser-sync').create();
+const cleanCSS = require('gulp-clean-css');
 
 gulp.task('mergeSass', () => {
     return gulp.src('sass/**/*.scss')
@@ -22,6 +23,12 @@ gulp.task('sass', () => {
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./css/'));
 })
+
+gulp.task('minify-css', () => {
+    return gulp.src('css/styles.css')
+      .pipe(cleanCSS({compatibility: 'ie8'}))
+      .pipe(gulp.dest('./css/'));
+  });
 
 gulp.task('default', () => {
     browserSync.init({

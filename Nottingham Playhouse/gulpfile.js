@@ -38,6 +38,6 @@ gulp.task('default', () => {
     });
 
     gulp.watch('sass/**/*.scss', (done) => {
-        gulp.series(['clean', 'mergeSass', 'sass'])(done);
+        gulp.series(['clean', 'mergeSass', 'sass', 'minify-css'])(done);
     });
 });
